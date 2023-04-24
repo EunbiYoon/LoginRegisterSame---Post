@@ -6,16 +6,16 @@ from django.urls import reverse_lazy
 
 
 # Create your views here.
-class HomeView(ListView):
+class CommentView(ListView):
     model=Post
-    template_name='home.html'
+    template_name='comment.html'
     ordering=['-post_date'] 
     #ordering=['-id']
 
     def get_context_data(self, *args, **kwargs):
         #name is only thing -> all = name
         cat_menu=Category.objects.all()
-        context=super(HomeView, self).get_context_data(*args, **kwargs)
+        context=super(CommentView, self).get_context_data(*args, **kwargs)
         context["cat_menu"]=cat_menu
         return context
 
@@ -54,4 +54,4 @@ class UpdatePostView(UpdateView):
 class DeletePostView(DeleteView):
     model=Post
     template_name='delete_post.html'
-    success_url=reverse_lazy('home')
+    success_url=reverse_lazy('comment')

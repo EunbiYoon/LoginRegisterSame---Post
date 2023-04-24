@@ -50,4 +50,4 @@ def UserRegisterView(request):
 
 def UserLogoutView(request):
     auth.logout(request)
-    return redirect('home')
+    return redirect('index')
